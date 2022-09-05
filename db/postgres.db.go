@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
+	"github.com/mohammadDV/backend_gin/entity"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -28,6 +29,11 @@ func ConnectPostgres() *gorm.DB {
 
 	if err != nil {
 		panic("Can not connect to pgdb")
+	}
+
+	err = db.AutoMigrate(&entity.User{})
+	if err != nil {
+		panic("Unable to migrate")
 	}
 
 	fmt.Println("Connect to db")

@@ -20,11 +20,11 @@ func Index(ctx *gin.Context) {
 }
 
 func Test(ctx *gin.Context) {
-	var user entity.UserJson
+	var user entity.User
 
 	// err := ctx.BindQuery(&user)
 	validate := validator.New()
-	ctx.BindJSON(&user)
+	ctx.BindQuery(&user)
 	// if err != nil {
 	// 	ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	// 	return
